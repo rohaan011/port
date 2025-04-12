@@ -1,251 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fancy Webpage</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>THis is it</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300&display=swap" rel="stylesheet">
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-    
+
     body {
-      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: 'Playfair Display', serif;
       overflow: hidden;
-      position: relative;
     }
-    
-    .container {
-      position: relative;
-      z-index: 10;
-    }
-    
-    h1 {
-      font-size: 4rem;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      position: relative;
-      overflow: hidden;
-      padding: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 80px 100px;
+      text-align: center;
+      color: #fff;
+      font-size: 3rem;
+      letter-spacing: 2px;
       transition: all 0.5s ease;
-    }
-    
-    h1 span {
-      display: inline-block;
+      animation: fadeInUp 2s ease-out forwards;
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
     }
-    
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
+
+    .glass-card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.15);
     }
-    
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-                  0 0 20px rgba(255, 255, 255, 0.3),
-                  0 0 30px rgba(255, 255, 255, 0.1);
-    }
-    
-    @keyframes rotateBackground {
+
+    @keyframes fadeInUp {
       0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
+        transform: translateY(40px);
+        opacity: 0;
       }
       100% {
-        background-position: 0% 50%;
+        transform: translateY(0);
+        opacity: 1;
       }
     }
-    
-    body::before {
-      content: '';
+
+    .sparkle {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #00f5a0, #00d9f5, #a000bc);
-      opacity: 0.3;
-      background-size: 400% 400%;
-      animation: rotateBackground 15s ease infinite;
-      z-index: 0;
-    }
-    
-    .cursor {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 9999;
-      transition: all 0.1s ease;
-      backdrop-filter: invert(100%);
-    }
-    
-    .cursor-dot {
-      position: fixed;
       width: 8px;
       height: 8px;
-      background-color: white;
+      background: #fff;
       border-radius: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 9999;
-      transition: all 0.15s ease-out;
+      box-shadow: 0 0 10px 2px #ffffff88;
+      animation: sparkle 3s infinite ease-in-out;
     }
-    
-    h1:hover {
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
-                  0 0 30px rgba(255, 255, 255, 0.6);
-      transform: scale(1.05);
-      border-color: rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.1);
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.5);
+        opacity: 1;
+      }
     }
   </style>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="cursor"></div>
-  <div class="cursor-dot"></div>
-  
-  <div class="container">
-    <h1 id="main-text"></h1>
-  </div>
-  
-  <div class="particles"></div>
-  
+  <div class="glass-card">THis is it</div>
+
   <script>
-    // Text animation
-    const text = "Kshitiz is gay. Super fucking Gay";
-    const mainText = document.getElementById('main-text');
-    
-    // Create spans for each letter
-    text.split('').forEach(letter => {
-      const span = document.createElement('span');
-      span.textContent = letter;
-      mainText.appendChild(span);
-    });
-    
-    // Animate letters one by one
-    const spans = mainText.querySelectorAll('span');
-    
-    setTimeout(() => {
-      spans.forEach((span, index) => {
-        setTimeout(() => {
-          span.style.opacity = 1;
-          span.style.transform = 'translateY(0)';
-        }, 100 * index);
-      });
-    }, 500);
-    
-    // Particle effect
-    const particles = document.querySelector('.particles');
-    const createParticles = (num) => {
-      for (let i = 0; i < num; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        const size = Math.random() * 5 + 2;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const duration = Math.random() * 20 + 10;
-        const delay = Math.random() * 5;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        particle.style.opacity = Math.random() * 0.8 + 0.2;
-        
-        // Animate particles
-        particle.animate([
-          { transform: `translate(0, 0)`, opacity: Math.random() * 0.8 + 0.2 },
-          { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`, opacity: 0 }
-        ], {
-          duration: duration * 1000,
-          delay: delay * 1000,
-          easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
-          iterations: Infinity
-        });
-        
-        particles.appendChild(particle);
-      }
-    };
-    
-    createParticles(50);
-    
-    // Custom cursor
-    const cursor = document.querySelector('.cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-    
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      
-      cursorDot.style.left = e.clientX + 'px';
-      cursorDot.style.top = e.clientY + 'px';
-    });
-    
-    document.addEventListener('mousedown', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-      cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-    });
-    
-    document.addEventListener('mouseup', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-    
-    // Add 3D effect on mouse move
-    document.addEventListener('mousemove', e => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      
-      mainText.style.transform = `perspective(1000px) rotateY(${x * 10 - 5}deg) rotateX(${y * -10 + 5}deg) scale(1.05)`;
-    });
-    
-    // Reset position when mouse leaves
-    document.addEventListener('mouseleave', () => {
-      mainText.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale(1.05)';
-    });
-    
-    // Add some randomized animations to spans
-    setInterval(() => {
-      const randomSpan = spans[Math.floor(Math.random() * spans.length)];
-      randomSpan.style.textShadow = '0 0 20px rgba(255, 255, 255, 1)';
-      randomSpan.style.transform = 'translateY(-5px)';
-      
-      setTimeout(() => {
-        randomSpan.style.textShadow = '';
-        randomSpan.style.transform = 'translateY(0)';
-      }, 500);
-    }, 2000);
+    // Sparkle animation for a magical feel
+    for (let i = 0; i < 25; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(sparkle);
+    }
   </script>
 </body>
 </html>
